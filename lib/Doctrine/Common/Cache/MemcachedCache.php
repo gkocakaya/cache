@@ -129,4 +129,12 @@ class MemcachedCache extends CacheProvider
             Cache::STATS_MEMORY_AVAILABLE => $stats['limit_maxbytes'],
         );
     }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function getIds()
+    {
+        return  $this->memcached->getAllKeys();
+    }
 }
