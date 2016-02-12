@@ -231,14 +231,16 @@ abstract class CacheProvider implements Cache, FlushableCache, ClearableCache, M
         $ids = $this->getIds();
         $deleted = array();
 
-
-        foreach ($ids as $id) {
-
-            if (strpos($id, $prefix) !== false) {
-                $this->doDelete($id);
-
-
-                $deleted[] = $id;
+        if ($ids)
+        {
+            foreach ($ids as $id) {
+    
+                if (strpos($id, $prefix) !== false) {
+                    $this->doDelete($id);
+    
+    
+                    $deleted[] = $id;
+                }
             }
         }
         return $deleted;
