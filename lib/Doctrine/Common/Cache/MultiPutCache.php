@@ -20,21 +20,22 @@
 namespace Doctrine\Common\Cache;
 
 /**
- * Interface for cache that can be flushed.
- *
- * Intended to be used for partial clearing of a cache namespace. For a more
- * global "flushing", see {@see FlushableCache}.
+ * Interface for cache drivers that allows to put many items at once.
  *
  * @link   www.doctrine-project.org
- * @since  1.4
- * @author Adirelle <adirelle@gmail.com>
+ * @since  1.6
+ * @author Daniel Gorgan <danut007ro@gmail.com>
  */
-interface ClearableCache
+interface MultiPutCache
 {
     /**
-     * Deletes all cache entries in the current cache namespace.
+     * Returns a boolean value indicating if the operation succeeded.
      *
-     * @return bool TRUE if the cache entries were successfully deleted, FALSE otherwise.
+     * @param array $keysAndValues  Array of keys and values to save in cache
+     * @param int   $lifetime       The lifetime. If != 0, sets a specific lifetime for these
+     *                              cache entries (0 => infinite lifeTime).
+     *
+     * @return bool TRUE if the operation was successful, FALSE if it wasn't.
      */
-    public function deleteAll();
+    function saveMultiple(array $keysAndValues, $lifetime = 0);
 }

@@ -2,16 +2,16 @@
 
 namespace Doctrine\Tests\Common\Cache;
 
-use Doctrine\Common\Cache\ApcCache;
+use Doctrine\Common\Cache\ApcuCache;
 
 /**
- * @requires extension apc
+ * @requires extension apcu
  */
-class ApcCacheTest extends CacheTest
+class ApcuCacheTest extends CacheTest
 {
     protected function _getCacheDriver()
     {
-        return new ApcCache();
+        return new ApcuCache();
     }
 
     public function testLifetime()
