@@ -113,7 +113,7 @@ class PredisCache extends CacheProvider
             return $this->client
                 ->keys('*');
         }
-
+    }
     /**
      * {@inheritdoc}
      */
